@@ -1,5 +1,6 @@
 package com.example.selfpromoapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -39,7 +40,8 @@ class MainActivity : AppCompatActivity() {
         val jobTitle = spinner_job_title.selectedItem?.toString()
         val immediateStart = check_box_immediate_start.isChecked
         val startDate = edit_text_start_date.text.toString()
-        val testString = "Contact name: $contactName, Contact Number: $contactNumber, My Display Name: $myDisplayName, Include Junior: $includeJunior, Job Title: $jobTitle, Immediate Start: $immediateStart, Start Date: $startDate"
-        Toast.makeText(this, testString, Toast.LENGTH_LONG).show()
+
+        val previewActivityIntent = Intent(this, PreviewActivity::class.java)
+        startActivity(previewActivityIntent)
     }
 }
