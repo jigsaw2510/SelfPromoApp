@@ -3,6 +3,7 @@ package com.example.selfpromoapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Spinner
@@ -30,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         button_preview.setOnClickListener {
             onPreviewClicked()
         }
+        val spinnerValues: Array<String> = arrayOf("our", "array", "values")
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, spinnerValues)
+        spinner_job_title.adapter = spinnerAdapter
     }
 
     private fun onPreviewClicked() {
@@ -42,6 +46,13 @@ class MainActivity : AppCompatActivity() {
         val startDate = edit_text_start_date.text.toString()
 
         val previewActivityIntent = Intent(this, PreviewActivity::class.java)
+        previewActivityIntent.putExtra("Contact Name", contactName)
+        previewActivityIntent.putExtra("Contact Number", contactNumber)
+        previewActivityIntent.putExtra("My Display Name", myDisplayName)
+        previewActivityIntent.putExtra("Include Junior", includeJunior)
+        previewActivityIntent.putExtra("Job Title", jobTitle)
+        previewActivityIntent.putExtra("Immediate Start", immediateStart)
+        previewActivityIntent.putExtra("Start Date", startDate)
         startActivity(previewActivityIntent)
     }
 }
